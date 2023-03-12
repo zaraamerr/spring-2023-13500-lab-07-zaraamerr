@@ -1,8 +1,3 @@
-#include <iostream>
-#include <string>
-
-//file to store bad code!!
-
 int main(){
            // Hi, I'm a program!
 int x = 1; 
