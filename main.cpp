@@ -11,9 +11,12 @@
 int main() {
     std::ifstream input("bad-code.cpp"); // open the input file
     std::string line;
+    int blockCount = 0;
     while (std::getline(input, line)) { // read each line from the file
-        std::string fixedLine = removeLeadingSpaces(line); //unindent/remove tabs & leading spaces
-        std::cout << fixedLine << '\n'; //output unindented line
+        line = removeLeadingSpaces(line); //unindent/remove tabs & leading spaces
+        std::string indentedLine = indent(line, blockCount); //indent the line based on open blocks
+        std::cout << indentedLine << '\n'; //output indented line
     }
     return 0;
 }
+
