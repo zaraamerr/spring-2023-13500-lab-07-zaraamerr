@@ -31,21 +31,20 @@ int countChar(std::string line, char c) {
 
 
 std::string indent(std::string line, int& blockCount) {
-    line = removeLeadingSpaces(line); //remove leading spaces from line
-    int openBraces = countChar(line, '{'); //use countChar func to count the instances of the {
-    int closeBraces = countChar(line, '}'); //use countChar func to count the instances of the } 
-    blockCount += openBraces; //increment the block count by the number of open braces on the current line
+    line = removeLeadingSpaces(line); // remove leading spaces from line
+    int openBraces = countChar(line, '{'); // count the instances of '{'
+    int closeBraces = countChar(line, '}'); // count the instances of '}'
     blockCount -= closeBraces; //decrement the block count by the number of close braces on the current line
-    std::string indentedLine = ""; //initialize an empty str that will later on store the indented code
-    for (int i = 0; i < blockCount; i++) { //for every open block in the code
-        indentedLine += '\t'; //add that many tabs at the beginning of each line
+    std::string indentedLine = ""; // initialize an empty string for the indented line
+    for (int i = 0; i < blockCount; i++) { // for every open block in the code
+        indentedLine += '\t'; // add that many tabs at the beginning of each line
     }
     indentedLine += line;
-    if (line.find('}') == 0) { //if we find a closing brace
-        blockCount--; //decrement block count
-    }
-    return indentedLine; //return the indented code
+    blockCount += openBraces; // increment the block count by the number of open braces on the current line
+    blockCount -= closeBraces; // decrement the block count by the number of close braces on the current line
+    return indentedLine; // return the indented code
 }
+
 
 
 
